@@ -2,7 +2,7 @@ public class App {
    
 public static void main(String args[]) {
   
-      int []cpf={3,8,6,7,8,1,4,6,8,6,9};
+      int []cpf={1,2,3,4,5,6,7,8,9,1,2};
       int [] resultados = new int [9];
       int [] resultadosDois = new int [10];
       int [] digitos = new int[2];
