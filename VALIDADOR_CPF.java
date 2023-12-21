@@ -53,7 +53,7 @@ public static void main(String args[]) {
              System.out.println("O CPF É VALIDO");
         
         } else {
-             System.out.println("O CPF é invalido");
+             System.out.println("O CPF É INVALIDO");
                 
          }
         
