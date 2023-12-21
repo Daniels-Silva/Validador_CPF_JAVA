@@ -1,14 +1,12 @@
-public class App {
-   
 public static void main(String args[]) {
   
-      int []cpf={1,2,3,4,5,6,7,8,9,1,2};
+      int []cpf={3,8,0,8,8,5,5,6,5,6,9};
       int [] resultados = new int [9];
       int [] resultadosDois = new int [10];
       int [] digitos = new int[2];
       int digito = 0, resto = 0, soma=0, result = 0, decremento = 10;
       
-        //LENDO O CPF E CALCULANDO O RESULTADO DOS PRIMEIROS CALCULOS
+        //CALCULO PRIMEIRO DIGITO
         for (int i = 0; i < cpf.length; i++) {
             if(i <= 8){
                 result = cpf[i] * decremento;
@@ -28,8 +26,7 @@ public static void main(String args[]) {
         
         digitos[0] = digito;
         
-       // System.out.printf("Vetor digitos: %d%n", digitos[0]);
-        
+        //CALCULO O SEGUNDO DIGITO
         decremento = 11;
         soma = 0;
         
@@ -42,7 +39,6 @@ public static void main(String args[]) {
                 };
             };
         
-        
         resto = soma % 11;
  
         if(resto < 2){
@@ -53,15 +49,14 @@ public static void main(String args[]) {
         
          digitos[1] = digito;
         
+         if (digitos[0] == cpf[9] && digitos[1] == cpf[10]) {
+             System.out.println("O CPF É VALIDO");
         
-     
-        for(int i:digitos){
-            System.out.printf(" %d", i);
-            
-        }
-        
+        } else {
+             System.out.println("O CPF é invalido");
+                
+         }
         
         }
     
     }
-
