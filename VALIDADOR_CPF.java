@@ -1,10 +1,27 @@
+import java.util.Scanner;
+
+
+public class App {
+   
 public static void main(String args[]) {
   
-      int []cpf={3,8,0,8,8,5,5,6,5,6,9};
+      int []cpf= new int[11];
       int [] resultados = new int [9];
-      int [] resultadosDois = new int [10];
+      int [] resultadosDois = new int [10]; 
       int [] digitos = new int[2];
       int digito = 0, resto = 0, soma=0, result = 0, decremento = 10;
+      String cpfOriginal = "";
+      
+      Scanner input = new Scanner(System.in);
+      
+      System.out.println("Informe o CPF: ");
+      cpfOriginal = input.next();
+      
+      
+      for (int i = 0; i < cpfOriginal.length(); i++) {
+      char caractere = cpfOriginal.charAt(i);
+      cpf[i] = Character.getNumericValue(caractere);
+        }
       
         //CALCULO PRIMEIRO DIGITO
         for (int i = 0; i < cpf.length; i++) {
@@ -53,7 +70,7 @@ public static void main(String args[]) {
              System.out.println("O CPF É VALIDO");
         
         } else {
-             System.out.println("O CPF É INVALIDO");
+             System.out.println("O CPF é invalido");
                 
          }
         
