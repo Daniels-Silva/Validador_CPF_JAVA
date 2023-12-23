@@ -1,7 +1,19 @@
 import java.util.Scanner;
 
-
 public class App {
+    
+    //Função que calcula o digito verificador
+    public static int verificaDigito (int soma, int digito, int resto){
+        resto = soma % 11;
+ 
+        if(resto < 2){
+            digito = 0;
+        }else{
+            digito = 11 - resto;
+        }
+        
+        return digito;
+    }
    
 public static void main(String args[]) {
   
@@ -23,7 +35,7 @@ public static void main(String args[]) {
       cpf[i] = Character.getNumericValue(caractere);
         }
       
-        //CALCULO PRIMEIRO DIGITO
+        //Calculo MOD 11 e soma dos valores para atribuição no vetor resultados
         for (int i = 0; i < cpf.length; i++) {
             if(i <= 8){
                 result = cpf[i] * decremento;
@@ -33,17 +45,13 @@ public static void main(String args[]) {
             }
         }
         
-        resto = soma % 11;
-  
-        if(resto < 2){
-            digito = 0;
-        }else{
-            digito = 11 - resto;
-        }
+        //Chamando a função que retorna o digito verificador
+        int digitoUm = verificaDigito(soma, digito, resto);
+        System.out.println("O Primeiro digito do CPF é: " + digitoUm);
         
-        digitos[0] = digito;
+        digitos[0] = digitoUm;
         
-        //CALCULO O SEGUNDO DIGITO
+        // //Calculo MOD 11 e soma dos valores para atribuição no vetor resultados
         decremento = 11;
         soma = 0;
         
@@ -56,15 +64,11 @@ public static void main(String args[]) {
                 };
             };
         
-        resto = soma % 11;
- 
-        if(resto < 2){
-            digito = 0;
-        }else{
-            digito = 11 - resto;
-        }
+         //Chamando a função que retorna o digito verificador
+         int digitoDois = verificaDigito(soma, digito, resto);
+         System.out.println("O Segundo digito do CPF é: " + digitoDois);
         
-         digitos[1] = digito;
+         digitos[1] = digitoDois;
         
          if (digitos[0] == cpf[9] && digitos[1] == cpf[10]) {
              System.out.println("O CPF É VALIDO");
