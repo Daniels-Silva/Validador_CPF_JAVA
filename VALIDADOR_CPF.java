@@ -1,8 +1,16 @@
+package validador_CPF;
+import java.util.ArrayList;
 import java.util.Scanner;
+public class validaCPF {
+	
 
-public class App {
-    
-    //Função que calcula o digito verificador
+    /* 
+   	VALIDADOR DE CPF
+  
+    NAO EXISTE a necessidade do ARRAYLIST no código, pórém o código era pra fins didaticos, para manipulação do ARRAYLIST
+    */
+	
+	// Função que retorna o digito verificador
     public static int verificaDigito (int soma, int digito, int resto){
         resto = soma % 11;
  
@@ -15,11 +23,12 @@ public class App {
         return digito;
     }
    
-public static void main(String args[]) {
-  
+
+    public static void main(String args[]) {
+    	
+
+      ArrayList<Integer> resultados = new ArrayList<>();
       int []cpf= new int[11];
-      int [] resultados = new int [9];
-      int [] resultadosDois = new int [10]; 
       int [] digitos = new int[2];
       int digito = 0, resto = 0, soma=0, result = 0, decremento = 10;
       String cpfOriginal = "";
@@ -35,15 +44,18 @@ public static void main(String args[]) {
       cpf[i] = Character.getNumericValue(caractere);
         }
       
-        //Calculo MOD 11 e soma dos valores para atribuição no vetor resultados
+        //Calculo primeiro digito
         for (int i = 0; i < cpf.length; i++) {
             if(i <= 8){
                 result = cpf[i] * decremento;
                 decremento--;
-                resultados[i] = (result);
-                soma += resultados[i];
+                resultados.add(result);
+                	
             }
         }
+        for(Integer iN:resultados) {
+    		soma += iN;
+    	}
         
         //Chamando a função que retorna o digito verificador
         int digitoUm = verificaDigito(soma, digito, resto);
@@ -51,18 +63,24 @@ public static void main(String args[]) {
         
         digitos[0] = digitoUm;
         
-        // //Calculo MOD 11 e soma dos valores para atribuição no vetor resultados
+        // Calculo segundo digito
+        resultados.clear();
         decremento = 11;
         soma = 0;
         
-         for (int i = 0; i < cpf.length; i++) {
-             if(i <= 9){
-             result = cpf[i] * decremento;
-             decremento--;
-             resultadosDois[i] = (result);
-             soma += resultadosDois[i];
-                };
-            };
+        for (int i = 0; i < cpf.length; i++) {
+            if(i <= 9){
+                result = cpf[i] * decremento;
+                decremento--;
+                resultados.add(result);
+                	
+            }
+        }
+        
+        for(Integer iN:resultados) {
+    		soma += iN;
+    	}
+        
         
          //Chamando a função que retorna o digito verificador
          int digitoDois = verificaDigito(soma, digito, resto);
@@ -71,13 +89,18 @@ public static void main(String args[]) {
          digitos[1] = digitoDois;
         
          if (digitos[0] == cpf[9] && digitos[1] == cpf[10]) {
-             System.out.println("O CPF É VALIDO");
+             System.out.println("O CPF " + cpfOriginal + " É VALIDO");
         
         } else {
-             System.out.println("O CPF é invalido");
+             System.out.println("O CPF " + cpfOriginal + " É INVALIDO");
                 
-         }
-        
         }
+        
+        
+    
+    	}
     
     }
+
+
+
